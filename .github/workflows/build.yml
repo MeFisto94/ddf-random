@@ -22,8 +22,9 @@ jobs:
       - name: build
         run: npm run build
 
-      - name: Zip build
-        run: zip -r build-${{  github.ref_name }}.zip build/*
+      - name: zip build
+        working-directory: build
+        run: zip -r ../build-${{  github.ref_name }}.zip .
 
       - name: Release
         uses: softprops/action-gh-release@v2
